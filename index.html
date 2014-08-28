@@ -20,7 +20,7 @@ var app = app || {}
 
 app.header = function(){
 	var modal = "api/header.json"
-	var view = "templates/header.html"
+	var view = "view/header.html"
 	var headerDiv = "#header"
 	var navList = "ul.nav li"
 	mvc(modal,view,function(modal,view){
@@ -34,7 +34,7 @@ app.header = function(){
 
 app.container = function(){
 	var modal = "api/container.json"
-	var view = "templates/container.html"
+	var view = "view/container.html"
 	var container = "#container"
 	
 	mvc(modal,view,function(modal,view){
@@ -94,7 +94,7 @@ app.container = function(){
 
 app.overview = function(){
 	var modal = "api/overview.json"
-	var view = "templates/overview.html"
+	var view = "view/overview.html"
 	var container = "#overview"
 	
 	mvc(modal,view,function(modal,view){

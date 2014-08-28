@@ -46,7 +46,7 @@ POST
 REST
 PURD
 CURD 
-*/
+
 comments.init = function(){
   $('#comments button').on('click',function(){
 
@@ -87,4 +87,4 @@ comments.read = function(){
 comments.delete = function(){
   
 }
-
+*/
