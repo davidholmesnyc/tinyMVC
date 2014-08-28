@@ -1,0 +1,47 @@
+
+	<div id="overview-breakdown">
+		  <div class="panel panel-success dashboard_leads_overview" data-status="accepted"  >
+		        	<div class="panel-heading " >
+		        	    <h3 class="panel-title">Accepted</h3>
+		        	</div>
+		        	 <div class="panel-body" id="dashboard-overview-accepted">{{Accepted}}</div>
+		        	</div>					
+		        	<div class="panel panel-danger dashboard_leads_overview" data-status="rejected" >
+		        	        <div class="panel-heading">
+		        	          <h3 class="panel-title">Rejected</h3>
+		        	        </div>
+		        	        <div class="panel-body" id="dashboard-overview-rejected">{{Rejected}}</div>
+		        	</div>					
+		        	<div class="panel  panel-warning dashboard_leads_overview" data-status="bad" >
+		        	        <div class="panel-heading">
+		        	          <h3 class="panel-title">Bad</h3>
+		        	        </div>
+		        	        <div class="panel-body" id="dashboard-overview-bad" >{{Bad}}</div>
+		        	</div>					
+		        	<div class="panel  panel-info dashboard_leads_overview" data-status="junked" >
+		        	        <div class="panel-heading">
+		        	          <h3 class="panel-title">Junked</h3>
+		        	        </div>
+		        	        <div class="panel-body" id="dashboard-overview-unknown">{{Unknown}}</div>
+		        	</div>        	
+		        	<div class="panel  panel-default dashboard_leads_overview" data-status="" >
+		        	        <div class="panel-heading">
+		        	          <h3 class="panel-title">Total Leads</h3>
+		        	        </div>
+		        	        <div class="panel-body" id="dashboard-overview-total">{{Total_Leads}}</div>
+		        	</div>        	
+
+</div>
+
+<style>
+.dashboard_leads_overview{
+	cursor:pointer;
+	width:10%;
+	display:inline-block;
+}
+.dashboard_leads_overview:hover{
+	border:1px solid #0085FF;;
+}
+
+
+</style>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+<script src="javascript/tinyMVC.js"></script>
+<script src="javascript/build_table.js"></script>
+<script src="javascript/highcharts.js"></script>
+<script src="javascript/chart_widget.js"></script>
+<title>Simple Dashboard Template</title>
+<html>
+<body>
+	<div id="header"></div>
+	<div id="container" style="margin-top:6%;margin-left:2%"></div>
+	<div id="footer"></div>
+<script>
+var app = app || {}
+
+app.header = function(){
+	var modal = "api/header.json"
+	var view = "templates/header.html"
+	var headerDiv = "#header"
+	var navList = "ul.nav li"
+	mvc(modal,view,function(modal,view){
+		$(headerDiv).html(view)
+		$(navList).on("click",function(){
+			$(navList).removeClass("active")
+			$(this).addClass("active")
+		})
+	})
+}()
+
+app.container = function(){
+	var modal = "api/container.json"
+	var view = "templates/container.html"
+	var container = "#container"
+	
+	mvc(modal,view,function(modal,view){
+		// ADD THE VIEW TO THE CONTAINER 
+		$(container).html(view)
+		
+		//<!-- BUILD CHART -->>  
+		new chart_widget({
+			title:'', // This give the charts a title 
+			id:"chart1", // this tells the chart to render in this id 
+			url:'api/chartData.json', // this is the URL that grabs that JSON
+			chart_type: "line", // this tells the chart_widget what type of charts
+			chart_title: "", // this gives it the high charts title 
+			x_axis_title: '', // this is the x-axis title 
+			x_axis: 'formated_Date', // this tells chart_widget the x-axis is report_date in the json
+			colors:['#50B432','#FF4747', '#DDDF00', '#24CBE5', '#64E572',],
+			y_axis_title: "", // this gives the y-axis title 
+			series: [
+			{name:'Accepted',data:'Accepted'},
+			{name:'Rejected',data:'Rejected'},
+			{name:'Bad',data:'Bad'},
+			{name:'Unknown',data:'Unknown'},
+			{name:'Total',data:'Total_Leads'}
+			], // this is the chart seris based off the JSON
+			reverse:'' // this reverses the json array incase the dates are one way
+		});
+			
+		//<!-- BUILD CHART -->>  
+		new chart_widget({
+			title:'', // This give the charts a title 
+			id:"chart2", // this tells the chart to render in this id 
+			url:'api/chartData.json', // this is the URL that grabs that JSON
+			chart_type: "column", // this tells the chart_widget what type of charts
+			chart_title: "", // this gives it the high charts title 
+			x_axis_title: '', // this is the x-axis title 
+			x_axis: 'formated_Date', // this tells chart_widget the x-axis is report_date in the json
+			colors:['#50B432','#FF4747', '#DDDF00', '#24CBE5', '#64E572',],
+			y_axis_title: "", // this gives the y-axis title 
+			series: [
+			{name:'Accepted',data:'Accepted'},
+			{name:'Rejected',data:'Rejected'},
+			{name:'Bad',data:'Bad'},
+			{name:'Unknown',data:'Unknown'},
+			{name:'Total',data:'Total_Leads'}
+			], // this is the chart seris based off the JSON
+			reverse:'' // this reverses the json array incase the dates are one way
+		});	
+
+		//<!-- BUILD TABLE  -->
+		$.getJSON('api/tableData.json')
+		.then(function(data){
+			StanFanTech.tools.build_table ('#table',data)
+		})
+		
+	})
+}()
+
+app.overview = function(){
+	var modal = "api/overview.json"
+	var view = "templates/overview.html"
+	var container = "#overview"
+	
+	mvc(modal,view,function(modal,view){
+		// ADD THE VIEW TO THE CONTAINER 
+		$(container).prepend(view)
+
+	})
+}()
+</script>
+</body>
+</html>
+

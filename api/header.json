@@ -1,0 +1,10 @@
+{
+  "title":"My Online Website",
+  "homepage":{"title":"My Homepage","href":"#home"},
+  "links":[
+    {"title":"Link 1 ","href":"#link1"},
+    {"title":"Link 2 ","href":"#link2"},
+    {"title":"Dashboard ","href":"#Dashboard"}
+  ],
+  "settings":{"background":"#C42323","color":"white"}
+}
